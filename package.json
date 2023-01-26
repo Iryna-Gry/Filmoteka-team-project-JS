@@ -2,7 +2,7 @@
   "name": "Filmoteka-team-project-JS",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Iryna-Gry.github.io/Filmoteka-team-project-JS/",
+  "homepage": "https://iryna-gry.github.io/Filmoteka-team-project-JS/",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /Filmoteka-team-project-JS/"
