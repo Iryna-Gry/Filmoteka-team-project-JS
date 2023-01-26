@@ -56,7 +56,10 @@ async function OnAddWatchedClick(event) {
 
       localStorage.setItem(keyWatchedLS, JSON.stringify(arrayWatched));
     }
-    checkStatusBTN(movieID);
+    const btnWatchedStatus = checkStatusBTN(movieID);
+    if (!btnWatchedStatus) {
+      renderWatched();
+    }
   } else {
     checkForLoginState();
   }
@@ -73,6 +76,7 @@ function checkStatusBTN(movieID) {
     }
     refs.watchedAddBtn.textContent = 'Remove from watched';
     refs.watchedAddBtn.dataset.action = 'remove';
+    return indexID;
   } else {
     refs.watchedAddBtn.textContent = 'Add to watched';
     refs.watchedAddBtn.dataset.action = 'add';

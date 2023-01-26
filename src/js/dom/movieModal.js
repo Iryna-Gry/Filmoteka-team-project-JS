@@ -8,7 +8,10 @@ import {
 } from '../dom/watchedLS';
 import { addListenerAddBtnTrailer } from './trailer';
 import myImageUrl from '../../images/sorry.png';
+import { refs } from '../dom/refs.js';
 
+const modalMovie = document.querySelector('[data-modal]');
+const btnClose = document.querySelector('.button-modal-movie--close');
 function activeMovieModal() {
   setTimeout(() => {
     const movieItems = document.querySelectorAll('.movie__item');
@@ -24,6 +27,10 @@ function activeMovieModal() {
         getMovieDetails(id).then(data => {
           const backdrop = document.querySelector('.backdrop');
           backdrop.classList.remove('is-hidden');
+          const btnClose = document.querySelector('.button-modal-movie--close');
+          btnClose.addEventListener('click', onCloseMovieModal);
+          window.addEventListener('keydown', onEscKeyPressMovieModal);
+          backdrop.addEventListener('click', onBackdropMovieClick);
           //Заповнення id для кнопки Add to watched і Add to queue
           document
             .querySelector('.modal-movie__content')
@@ -87,25 +94,29 @@ function activeMovieModal() {
     //     e.preventDefault();
     //     document.querySelector('.backdrop').classList.add('is-hidden');
     //   });
-
-    document.querySelector('.backdrop').addEventListener('click', e => {
-      if (
-        e.target.classList.contains('button-modal-movie--close') ||
-        e.target.classList.contains('backdrop')
-      ) {
-        document.querySelector('.backdrop').classList.add('is-hidden');
-
-        window.addEventListener('keydown', e => {
-          document.querySelector('.backdrop').classList.add('is-hidden');
-        });
-
-        //Потрібно перерендерить сторінку якщо фільм був видалений
-        renderWatched();
-        renderQueue();
-      }
-    });
   }, 1000);
 }
 
 activeMovieModal();
 export { activeMovieModal };
+
+export function onCloseMovieModal() {
+  modalMovie.classList.toggle('is-hidden');
+  refs.body.classList.remove('no-scroll');
+  window.removeEventListener('keydown', onEscKeyPressMovieModal);
+  btnClose.removeEventListener('click', onCloseMovieModal);
+  modalMovie.removeEventListener('click', onBackdropMovieClick);
+  refs.body.classList.remove('no-scroll');
+}
+
+export function onBackdropMovieClick(e) {
+  if (e.currentTarget === e.target) {
+    onCloseMovieModal();
+  }
+}
+
+export function onEscKeyPressMovieModal(e) {
+  if (e.code === 'Escape') {
+    onCloseMovieModal();
+  }
+}

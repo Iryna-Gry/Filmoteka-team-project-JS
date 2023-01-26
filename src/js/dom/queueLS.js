@@ -26,7 +26,10 @@ async function onAddQueueClick(event) {
     let movieId = Number(refs.modalMovieContent.getAttribute('data-id'));
 
     await addToQueue(movieId);
-    await checkQueueBtn(movieId);
+    const queueBtnStatus = await checkQueueBtn(movieId);
+    if (!queueBtnStatus) {
+      renderQueue();
+    }
   } else {
     checkForLoginState();
   }
@@ -105,6 +108,7 @@ async function checkQueueBtn(movieId) {
       return;
     }
     queueAddBtn.textContent = 'Remove from queue';
+    return indexID;
   } else {
     queueAddBtn.textContent = 'Add to queue';
   }
