@@ -32,8 +32,9 @@ html.dark .tui-prev {
   background-color: var(--light-text-color);
   color: var(--white-text-color);
 }
-html.dark body .login-modal__svg {
-  stroke: var(--white-text-color);
+html.dark body .login-modal__close-button {
+  color: var(--white-text-color);
+  stroke: currentColor;
 }
 // html.dark .button-modal-movie--close {
 //   background-color: var(--white-text-color);
@@ -77,17 +78,20 @@ html.light .page__theme {
   background: url('../images/icon-sun.svg');
 }
 .filter {
-  position: absolute;
+  // position: absolute;
   width: 90px;
   height: 30px;
   @include flex;
-  top: 205px;
-  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  // top: 205px;
+  // left: 50%;
+  margin-top: 10px;
   border-radius: 5px;
-  transform: translateX(-50%);
+  // transform: translateX(-50%);
   background: transparent;
   @include tablet {
-    top: 160px;
+    // top: 160px;
   }
   transition: all var(--duration) var(--cubic);
 }
@@ -96,23 +100,31 @@ html.light .page__theme {
   background-color: var(--accentBG);
 }
 .filter--active {
-  transform: translateX(-50%);
-  top: 210px;
+  // transform: translateX(-50%);
+  // top: 210px;
   @include pc {
-    top: 165px;
+    // top: 165px;
   }
 }
 .filter__btn,
 .filter__reset {
   color: var(--white-text-color);
   fill: var(--white-text-color);
-  background: transparent;
-  border-radius: 5px;
-  border: 1px solid var(--white-text-color);
+  @include font-box(500,12px,1.13, null);
+  // padding: 6px;
+    // background: transparent;
+  // border-radius: 5px;
+  // border: 1px solid var(--white-text-color);
   display: flex;
   align-items: center;
-  gap: 7px;
+  justify-content: center;
+  gap: 5px;
+  width: 80px;
+  height: 34px;
+
   cursor: pointer;
+  //  transition: color var(--duration) var(--cubic),
+  //     background-color var(--duration) var(--cubic);
 }
 #tags-genre {
   display: flex;
@@ -120,17 +132,17 @@ html.light .page__theme {
   align-items: center;
   flex-wrap: wrap;
   gap: 5px;
-  margin-top: 60px;
+  margin-top: 10px;
   padding: 20px;
   background: var(--modal-overlay);
   border: 1px solid var(--accentBG);
 
-  @include pc {
-    position: absolute;
-    top: 27px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 60px;
+  @include tablet {
+    // position: absolute;
+    // top: 27px;
+    // left: 50%;
+    // transform: translateX(-50%);
+    margin-top: 20px;
     padding: 0;
     background: none;
     border: none;
@@ -159,16 +171,9 @@ html.light .page__theme {
 
 .filter--active--color {
   background-color: var(--accentBG);
+  border-color: var(--accentBG);
 }
 
 .filter__reset {
   margin-left: 7px;
-  width: 90px;
-  height: 30px;
-  background: transparent;
-  transition: all var(--duration) var(--cubic);
-  color: var(--white-text-color);
-}
-.filter__reset:hover {
-  background-color: var(--accentBG);
 }

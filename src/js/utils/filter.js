@@ -33,6 +33,8 @@ const genres = [
 ];
 
 function onFilterOpen(e) {
+  const searchDiv = document.querySelector('.search');
+  searchDiv.classList.toggle('visually-hidden');
   refs.filterOpenBtn.classList.toggle('filter--active');
   refs.filterBtn.classList.toggle('filter--active--color');
   refs.tagsEl.classList.toggle('visually-hidden');
