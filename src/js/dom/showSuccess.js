@@ -13,6 +13,7 @@ export function showSuccessModal(email) {
   refs.modalSuccess.addEventListener('click', onBackdropSuccessClick);
   window.addEventListener('keydown', onEscKeyPressSuccessModal);
   refs.successModalText.innerHTML = `Success! </br> Hello ${email}`;
+  location.reload();
 }
 
 function onBackdropSuccessClick(e) {

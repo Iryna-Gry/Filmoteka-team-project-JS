@@ -70,6 +70,8 @@ async function addToQueue(movieId) {
 }
 
 async function getQueue() {
+  if (refs.moviesOnInputList.classList.contains('nothing-here'))
+    refs.moviesOnInputList.classList.remove('nothing-here');
   let movieArray = localStorage.getItem(key);
   let parsedMovieArray = JSON.parse(movieArray);
   return Array.isArray(parsedMovieArray) ? parsedMovieArray : [];

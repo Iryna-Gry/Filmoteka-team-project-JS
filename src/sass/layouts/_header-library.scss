@@ -57,4 +57,18 @@
   @include font-box(500, 24px,1.33, null);
   text-align: center;
   display: block;
+  margin-top: 20px;
+}
+
+
+.nothing-here {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 20px;
+  display: flex;
+  color: inherit;
+  fill: currentColor;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

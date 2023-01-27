@@ -3,6 +3,7 @@ const { moviesOnInputList } = refs;
 import { activeMovieModal } from './movieModal';
 import { getGenres } from '../api/fetchAPI';
 import myImageUrl from '../../images/sorry.png';
+import sprite from '../../images/sprite.svg';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 const noPosterImg = myImageUrl;
 
@@ -94,6 +95,14 @@ export function renderLibraryGallery(data) {
       }
     )
     .join('');
-  moviesOnInputList.innerHTML = markupGallery;
-  activeMovieModal();
+  if (!markupGallery[0]) {
+    // const main = document.querySelector('main');
+    moviesOnInputList.classList.toggle('nothing-here');
+    const svgImage = `<svg width='750' height='500'><use href='${sprite}#nothing-here-space'></use></svg> <p class='movie-detail__title'>Oops, there are no movies in here!</p>`;
+
+    refs.moviesOnInputList.insertAdjacentHTML('beforeend', svgImage);
+  } else {
+    moviesOnInputList.innerHTML = markupGallery;
+    activeMovieModal();
+  }
 }

@@ -2,6 +2,7 @@ import { getMovieDetails } from '../api/fetchAPI';
 import { renderLibraryGallery } from '../dom/renderMovies';
 import { refs } from './refs';
 import { checkForLoginState } from './checkForLoginState-lib';
+import sprite from '../../images/sprite.svg';
 
 const keyWatchedLS = 'arrayWatched';
 //Перевіряємо є чи є в нас сховище з таким ключем і якщо немає створюємо
@@ -97,6 +98,8 @@ function onClickWatched(event) {
   if (localStorage.getItem('uid') && localStorage.getItem('username')) {
     document.querySelector('.queue-btn').classList.remove('activeLS');
     event.currentTarget.classList.add('activeLS');
+    if (refs.moviesOnInputList.classList.contains('nothing-here'))
+      refs.moviesOnInputList.classList.remove('nothing-here');
     //refs.watchedGallery = true;
     renderWatched();
   } else {
@@ -111,6 +114,11 @@ function renderWatched() {
       renderLibraryGallery(arrayWatched);
     }
   } else {
+    if (!refs.moviesOnInputList.classList.contains('nothing-here'))
+      refs.moviesOnInputList.classList.toggle('nothing-here');
+    const svgImage = `<svg width='750' height='500'><use href='${sprite}#nothing-here-space'></use></svg> <p class='movie-detail__title'>Oops, there are no movies in here!</p>`;
+
+    refs.moviesOnInputList.insertAdjacentHTML('beforeend', svgImage);
     return;
   }
 }
