@@ -1,36 +1,41 @@
 .header-library {
-  background: url("../images/library-mobile.jpg");
-  @include bg; 
-  padding-top: 40px; 
-  padding-bottom: 92px;
-  @include retina { 
-    background: url ("../images/library-mobile@2x.jpg");
+  background: url('../images/library-mobile.jpg');
+  @include bg;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  @include retina {
+    background: url ('../images/library-mobile@2x.jpg');
   }
-  
-  @include tablet { 
-      background: url("../images/library-tablet.jpg"); 
-      @include bg; 
-      padding-bottom: 70px;
-      @include retina { 
-        background: url("../images/library-tablet@2x.jpg");
-      }
-  }
-  @include pc { 
-      background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-      url("../images/library-pc.jpg");
-      @include bg; 
-      padding-bottom: 80px;
 
-      @include retina { 
-        background: url("../images/library-pc@2x.jpg");
-      }
+  @include tablet {
+    background: url('../images/library-tablet.jpg');
+    @include bg;
+    @include retina {
+      background: url('../images/library-tablet@2x.jpg');
+    }
+  }
+  @include pc {
+    background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url('../images/library-pc.jpg');
+    @include bg;
+
+    @include retina {
+      background: url('../images/library-pc@2x.jpg');
+    }
   }
 }
 
 .library-search {
-  margin-top: 50px;
+  margin-top: 10px;
   @include flex;
   gap: 20px;
+  @include tablet {
+    margin-top: 30px;
+  }
+  @include pc {
+    margin-top: 50px;
+  }
 }
 // .header-wrapper {
 //   display: flex;
@@ -38,7 +43,7 @@
 //     justify-content: flex-end;
 //     gap: 20px;
 //     flex-wrap: wrap;
-  
+
 //     @include tablet {
 //       flex-direction: row;
 //       justify-content: space-between;
@@ -51,24 +56,41 @@
 //   @include flex;
 // }
 .nothing-text {
-  width: 95vw;
   margin-left: auto;
   margin-right: auto;
-  @include font-box(500, 24px,1.33, null);
+  @include font-box(500, 18px, 1.33, null);
   text-align: center;
+  margin-bottom: 0;
   display: block;
-  margin-top: 20px;
+  // margin-top: 10px;
+  @include tablet {
+    @include font-box(500, 24px, 1.33, null);
+  }
+  @include pc {
+    margin-top: 20px;
+  }
 }
-
 
 .nothing-here {
   margin: 0;
   padding: 0;
-  padding-bottom: 20px;
+  // padding-bottom: 20px;
   display: flex;
   color: inherit;
   fill: currentColor;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  &-svg {
+    width: 280px;
+    height: 200px;
+    @include tablet {
+      width: 500px;
+      height: 300px;
+    }
+    @include pc {
+      width: 750px;
+      height: 500px;
+    }
+  }
 }

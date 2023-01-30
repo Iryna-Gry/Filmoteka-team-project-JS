@@ -98,7 +98,7 @@ export function renderLibraryGallery(data) {
   if (!markupGallery[0]) {
     // const main = document.querySelector('main');
     moviesOnInputList.classList.toggle('nothing-here');
-    const svgImage = `<svg width='750' height='500'><use href='${sprite}#nothing-here-space'></use></svg> <p class='movie-detail__title'>Oops, there are no movies in here!</p>`;
+    const svgImage = `<svg class="nothing-here-svg"><use href='${sprite}#nothing-here-space'></use></svg> <p class='movie-detail__title nothing-text'>Oops, there are no movies in here!</p>`;
 
     refs.moviesOnInputList.insertAdjacentHTML('beforeend', svgImage);
   } else {
