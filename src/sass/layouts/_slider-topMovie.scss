@@ -40,12 +40,12 @@
 
   @include tablet {
     width: 160px;
-    height: 270px;
+    height: 250px;
   }
 
   @include pc {
     width: 240px;
-    height: 360px;
+    height: 250px;
   }
 }
 .topMovieGallery-caption {
